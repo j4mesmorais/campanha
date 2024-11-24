@@ -1,0 +1,31 @@
+{
+  "name": "campanha",
+  "version": "1.0.0",
+  "description": "Este projeto é um sistema para gerenciamento de campanhas de envio de mensagens, desenvolvido em Node.js. Utilizamos Sequelize para ORM, Jest para testes, SQLite para banco de dados de testes e suporte a migrações de banco de dados para facilitar futuras mudanças para PostgreSQL ou outros bancos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j4mesmorais/campanha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j4mesmorais/campanha/issues"
+  },
+  "homepage": "https://github.com/j4mesmorais/campanha#readme",
+  "dependencies": {
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "sequelize-cli": "^6.6.2"
+  }
+}
