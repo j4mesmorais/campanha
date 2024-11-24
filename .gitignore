@@ -1,4 +1,4 @@
-  node_modules/
-  *.sqlite
-  .env
-  main.txt
+node_modules/
+*.sqlite
+.env
+main.txt
