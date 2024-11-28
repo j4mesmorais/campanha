@@ -1,0 +1,21 @@
+{
+"development": {
+  "dialect": "postgres",
+  "host": "localhost",
+  "username": "postgres",
+  "password": "postgres",
+  "database": "campanha"
+},
+"test": {
+  "dialect": "postgres",
+  "host": "localhost",
+  "username": "postgres",
+  "password": "postgres",
+  "database": "campanha"
+},
+
+  "production": {
+    "dialect": "postgres",
+    "url": "env.DATABASE_URL"
+  }
+}
