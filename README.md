@@ -61,13 +61,6 @@ As tabelas do banco de dados são:
 ### Configuração do Banco de Dados
 O arquivo `src/config/config.json` define as configurações para os ambientes:
 
-- **Development**:
-  - Usa PostgreSQL configurado via o arquivo `.env`.
-- **Test**:
-  - Usa PostgreSQL configurado via o arquivo `.env`.
-- **Production**:
-  - Usa PostgreSQL configurado via a variável de ambiente `DATABASE_URL`.
-
 ### Executar Migrações e Seeders
 Para criar as tabelas e popular o banco de dados com dados iniciais:
 ```bash
@@ -87,7 +80,6 @@ npm test
 ├── src
 │   ├── config
 │   │   └── config.json
-│   ├── database
 │   ├── migrations
 │   ├── models
 │   │   ├── index.js

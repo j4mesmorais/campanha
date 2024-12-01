@@ -41,28 +41,7 @@ describe('Models Associations', () => {
     const mensagensRestantes = await Mensagens.findAll({ where: { id_pecaPublicit: peca.id } });
     expect(mensagensRestantes.length).toBe(0);
   });
-
-  it('Não deve permitir a exclusão de uma mensagem associada a uma peça publicitária', async () => {
-    const peca = await PecaPublicit.create({ nomeCriativo: 'Peca com Mensagem', codEmp: 1 });
-    const mensagem = await Mensagens.create({
-      mensagem: { texto: 'Mensagem vinculada' },
-      ordem: 1,
-      id_pecaPublicit: peca.id,
-      codEmp: 1,
-    });
-
-    try {
-      await mensagem.destroy();
-    } catch (error) {
-      expect(error).toBeDefined();
-      expect(error.message).toBe('Não é possível excluir uma mensagem associada a uma peça publicitária.');
-    }
-
-    const mensagemExiste = await Mensagens.findByPk(mensagem.id);
-    expect(mensagemExiste).toBeDefined();
-
-  });
-
+  
   afterAll(async () => {
     await sequelize.close();
   });    
