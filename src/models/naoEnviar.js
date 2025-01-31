@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     codEmp: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'naoEnviar',
+    modelName: 'NaoEnviar',
+    tableName: 'NaoEnviar',
   });
 
 

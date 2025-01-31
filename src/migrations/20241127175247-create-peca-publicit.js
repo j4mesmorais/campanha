@@ -2,33 +2,26 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('PecaPublicits', {
+    await queryInterface.createTable('PecaPublicitaria', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nomeCriativo: {
+      nome_criativo: {
         type: Sequelize.STRING
       },
-      dataHora: {
+      data_hora: {
         type: Sequelize.DATE
       },
-      codEmp: {
+      cod_emp: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('PecaPublicits');
+    await queryInterface.dropTable('PecaPublicitaria');
   }
 };
