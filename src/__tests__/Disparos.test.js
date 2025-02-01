@@ -6,11 +6,11 @@ const BancoDeDados = require('../../BancoDeDados'); // Ajuste conforme o caminho
 const db = new BancoDeDados();
 
 describe.only('Models Associations', () => {
-  /*
+  
   beforeAll(async () => {
     await sequelize.sync({ force: true }); // Reseta o banco para cada execução
   });
-*/
+
   // Data e hora: 28/11/2024 às 10:22
   const dataHora = new Date('2024-11-28T10:22:00Z');
   it('Deve Criar o Disparo', async () => {
@@ -45,8 +45,9 @@ describe.only('Models Associations', () => {
       { celular: '+5511999999992', nome: 'Maria', imagem: 'maria.jpg', id_grupo: grupo.id },
       { celular: '+5511999999993', nome: 'Pedro', imagem: 'pedro.jpg', id_grupo: grupo.id },
       { celular: '+5511999999994', nome: 'Ana', imagem: 'ana.jpg', id_grupo: grupo.id },
-    ], { returning: true });
+    ]);
 
+    
     await db.CriaRelacionamento(
       'grupo',
       'itensgrupo',
@@ -59,6 +60,7 @@ describe.only('Models Associations', () => {
     expect(grupo).not.toBeNull();
     expect(itens.length).toBe(4);
   });
+  
 
 
   // Cria a Peca Publicitaria e os Itens da Peca Publicitaria
