@@ -1,5 +1,5 @@
 
-const { sequelize, Grupo, ItemGrupo, PecaPublicitaria, ItemPecaPublicitaria, Disparo, ItemDisparo } = require('../models');
+const { sequelize, Grupo, ItemGrupo, PecaPublicitaria, ItemPecaPublicitaria, Disparo, ItemDisparo,ItemItemDisparo} = require('../models');
 //const { sequelize, Disparo} = require('../models');
 const BancoDeDados = require('../../BancoDeDados'); // Ajuste conforme o caminho
 
@@ -125,6 +125,16 @@ describe.only('Models Associations', () => {
       )
     
     );
+
+    db.CriaRelacionamento(
+      'Disparo',
+      'ItensDisparo',
+      ItensDisparo.map(item => ({
+        ...item.dataValues,
+        masterId: item.dataValues.id_disparo // Adiciona 'masterId' baseado em 'id_grupo'
+      }))
+    );
+
     expect(ItensDisparo.length).toBe(3);
     
   });
@@ -137,37 +147,49 @@ describe.only('Models Associations', () => {
 
     /*
       console.log('Disparo:----------------');
-      console.log(await db.BuscarEntidade('Disparo'));
+      console.log(await db.BuscarEntidade('ItensDisparo'));
       console.log('------------------------');    
       console.log('Grupo:------------------');
-      console.log(await db.BuscarEntidade('grupo'));
+      console.log(await db.BuscarEntidade('itensgrupo'));
       console.log('------------------------');    
       console.log('Peca:----------------');
-      console.log(await db.BuscarEntidade('pecas'));
+      console.log(await db.BuscarEntidade('ItemPecaPublicitaria'));
       console.log('------------------------');           
     */
       
-      const ItensDisparo = await ItemDisparo.bulkCreate(
-     
-        await db.GerarItensDisparo(
-          await db.BuscarEntidade('Disparo'), 
-          await db.BuscarEntidade('grupo'), 
-          await db.BuscarEntidade('pecas')
-        )
+      let itensitensDisparos = [];
+
+      const ItemDisparos = db.BuscarEntidade('ItensDisparo');
+      ItemDisparos.forEach(ItemDisparo => {
+        const ItemGrupos = db.BuscarEntidade('itensgrupo');
+        ItemGrupos.forEach(ItemGrupo => {
+          const ItemPecaPublicitarias = db.BuscarEntidade('ItemPecaPublicitaria');
+          ItemPecaPublicitarias.forEach(ItemPecaPublicitaria => {
+            itensitensDisparos.push({
+              //id: id++,
+              id_item_disparo: ItemDisparo.id,
+              id_item_grupo: ItemGrupo.id,
+              id_item_peca_publicitaria: ItemPecaPublicitaria.id,
+              mensagem: ItemPecaPublicitaria.mensagem,
+              ordem: ItemPecaPublicitaria.ordem,
+              data: dataHora,
+              enviado:'false' 
+            });
+          });
+        });
+      });
       
+
+      const ItensItensDisparo = await ItemItemDisparo.bulkCreate(
+        itensitensDisparos
       );
-      expect(ItensDisparo.length).toBe(3);
+      
+      //console.log('ItensItensDisparo:----------------');
+      //console.log('QTD:',ItensItensDisparo.length);
+      //console.log(itensitensDisparos);
+      expect(ItensItensDisparo.length).toBe(48);
       
     });
-
-
-
-
-
-
-
-
-
 
 
 
