@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   class ItemItemDisparo extends Model {
     static associate(models) {
       this.belongsTo(models.Disparo, {
-        foreignKey: 'id_disparo',
+        foreignKey: 'id_item_disparo',
         as: 'ItemDisparo',
         onDelete: 'CASCADE', // Configuração para delete cascade
       });

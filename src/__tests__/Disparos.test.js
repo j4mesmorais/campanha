@@ -24,6 +24,7 @@ describe.only('Models Associations', () => {
     });
     await db.CriaEntidade('Disparo', [disparo.dataValues]);
     expect(disparo).not.toBeNull();
+   
   });
 
 
@@ -31,6 +32,7 @@ describe.only('Models Associations', () => {
   // Criação do grupo e Itens do grupo
   it('Cria o Grupo e os Itens', async () => {
     // Criação de um grupo
+    
     const grupo = await Grupo.create({
       descricao: 'Grupo de Teste',
       codigo: 'GRP001',
@@ -59,12 +61,14 @@ describe.only('Models Associations', () => {
 
     expect(grupo).not.toBeNull();
     expect(itens.length).toBe(4);
+    
   });
   
 
 
   // Cria a Peca Publicitaria e os Itens da Peca Publicitaria
   it('Cria a Peca Publicitaria e os Itens', async () => {
+    
     const dataHora = new Date('2024-11-28T10:22:00Z');
     const pecas = await PecaPublicitaria.bulkCreate([
       { nome_criativo: 'Peca 1', data_hora:dataHora, cod_emp: 1 }
@@ -83,8 +87,9 @@ describe.only('Models Associations', () => {
         ...item.dataValues,
         masterId: item.dataValues.id_peca_publicitaria // Adiciona 'masterId' baseado em 'id_grupo'
       }))
-    );
 
+    );
+      
 /*
     console.log('------------------------');
     console.log(db.BuscarEntidade('ItemPecaPublicitaria'));
@@ -130,10 +135,9 @@ describe.only('Models Associations', () => {
       }))
     );
 
-    expect(ItensDisparo.length).toBe(1);
+  expect(ItensDisparo.length).toBe(1);
     
   });
-
 
 
   // Cria os Itens dos Itens de Disparo
@@ -180,8 +184,8 @@ describe.only('Models Associations', () => {
       );
       
       console.log('ItensItensDisparo:----------------');
-      console.log('QTD:',ItensItensDisparo.length);
-      //console.log(itensitensDisparos);
+      console.log('QTD:',itensitensDisparos.length);
+      console.log(itensitensDisparos);
       expect(ItensItensDisparo.length).toBe(4);
       
     });
