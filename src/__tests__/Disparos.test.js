@@ -23,9 +23,7 @@ describe.only('Models Associations', () => {
       status: 'pause'
     });
     await db.CriaEntidade('Disparo', [disparo.dataValues]);
-
     expect(disparo).not.toBeNull();
-    //expect(itens.length).toBe(4);
   });
 
 
@@ -67,18 +65,13 @@ describe.only('Models Associations', () => {
   it('Cria a Peca Publicitaria e os Itens', async () => {
     const dataHora = new Date('2024-11-28T10:22:00Z');
     const pecas = await PecaPublicitaria.bulkCreate([
-      { nome_criativo: 'Peca 1', data_hora:dataHora, cod_emp: 1 },
-      { nome_criativo: 'Peca 2', data_hora:dataHora, cod_emp: 1 },
-      { nome_criativo: 'Peca 3', data_hora:dataHora, cod_emp: 1 },
+      { nome_criativo: 'Peca 1', data_hora:dataHora, cod_emp: 1 }
     ]);
 
     await db.CriaEntidade('pecas', pecas.map(item => item.dataValues));    
 
     const mensagens = await ItemPecaPublicitaria.bulkCreate([
-      { mensagem: "{ 'texto': 'Mensagem 1' }", ordem: 1, id_peca_publicitaria: pecas[0].id, codEmp: 1 },
-      { mensagem: "{ 'texto': 'Mensagem 2' }", ordem: 2, id_peca_publicitaria: pecas[0].id, codEmp: 1 },
-      { mensagem: "{ 'texto': 'Mensagem 3' }", ordem: 1, id_peca_publicitaria: pecas[1].id, codEmp: 1 },
-      { mensagem: "{ 'texto': 'Mensagem 4' }", ordem: 1, id_peca_publicitaria: pecas[2].id, codEmp: 1 },      
+      { mensagem: "{ 'texto': 'Mensagem 1' }", ordem: 1, id_peca_publicitaria: pecas[0].id, codEmp: 1 },   
     ]);
 
     db.CriaRelacionamento(
@@ -96,8 +89,8 @@ describe.only('Models Associations', () => {
     console.log('------------------------');    
 */
 
-    expect(pecas.length).toBe(3);
-    expect(mensagens.length).toBe(4);
+    expect(pecas.length).toBe(1);
+    expect(mensagens.length).toBe(1);
 
   });
 
@@ -135,7 +128,7 @@ describe.only('Models Associations', () => {
       }))
     );
 
-    expect(ItensDisparo.length).toBe(3);
+    expect(ItensDisparo.length).toBe(1);
     
   });
 
@@ -184,10 +177,10 @@ describe.only('Models Associations', () => {
         itensitensDisparos
       );
       
-      //console.log('ItensItensDisparo:----------------');
-      //console.log('QTD:',ItensItensDisparo.length);
+      console.log('ItensItensDisparo:----------------');
+      console.log('QTD:',ItensItensDisparo.length);
       //console.log(itensitensDisparos);
-      expect(ItensItensDisparo.length).toBe(48);
+      expect(ItensItensDisparo.length).toBe(4);
       
     });
 

@@ -5,7 +5,7 @@
   module.exports = (sequelize) => {
     class Grupo extends Model {
       static associate(models) {
-        this.hasMany(models.ItemGrupoWhats, {
+        this.hasMany(models.ItemGrupo, {
           foreignKey: 'id_grupo',
           as: 'ItemGrupo',
           onDelete: 'CASCADE', // Configuração para delete cascade
