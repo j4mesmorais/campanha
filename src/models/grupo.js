@@ -10,6 +10,11 @@
           as: 'ItemGrupo',
           onDelete: 'CASCADE', // Configuração para delete cascade
         });
+        this.belongsTo(models.Disparo, {
+          foreignKey: 'id_disparo',
+          as: 'Disparo',
+          onDelete: 'CASCADE', // Configuração para delete cascade
+        });        
       }
     }
   
@@ -20,6 +25,15 @@
           primaryKey: true,
           autoIncrement: true,
         },
+        id_disparo: {
+          type: DataTypes.BIGINT,
+          allowNull: false,
+          references: {
+            model: 'Disparo',
+            key: 'id',
+          },
+          onDelete: 'CASCADE', // Configuração para delete cascade
+        },        
         descricao: {
           type: DataTypes.TEXT,
           allowNull: false,

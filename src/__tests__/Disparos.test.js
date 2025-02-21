@@ -35,7 +35,7 @@ describe.only('Models Associations', () => {
     
     const grupo = await Grupo.create({
       descricao: 'Grupo de Teste',
-      codigo: 'GRP001',
+      id_disparo: 1,
       imagem: 'grupo-imagem.jpg',
       origem_lista: '{"origem":"Labels"}'
     });

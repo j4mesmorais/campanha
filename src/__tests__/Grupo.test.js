@@ -10,7 +10,7 @@ describe.only('Models Associations', () => {
     // Criação de um grupo
     const grupo = await Grupo.create({
       descricao: 'Grupo de Teste',
-      codigo: 'GRP001',
+      id_disparo: 1,
       imagem: 'grupo-imagem.jpg',
       origem_lista: '{"origem":"Labels"}'
     });
@@ -31,7 +31,7 @@ describe.only('Models Associations', () => {
     // Criação de um grupo
     const grupo = await Grupo.create({
       descricao: 'Grupo para Exclusão',
-      codigo: 'GRP002',
+      id_disparo: 1,
       imagem: 'grupo-exclusao.jpg',
       origem_lista: '{"origem":"Labels"}'
     });

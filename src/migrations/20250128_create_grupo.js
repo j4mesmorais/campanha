@@ -9,11 +9,17 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      descricao: {
-        type: Sequelize.TEXT,
+      id_disparo: {
+        type: Sequelize.BIGINT,
         allowNull: false,
-      },
-      codigo: {
+        references: {
+          model: 'Disparo', // Nome da tabela referenciada
+          key: 'id',           // Chave referenciada
+        },
+        onDelete: 'CASCADE',    // Delete cascade para remover os detalhes
+        onUpdate: 'CASCADE',    // Atualizar cascata para mudanças no master
+      },        
+      descricao: {
         type: Sequelize.TEXT,
         allowNull: false,
       },

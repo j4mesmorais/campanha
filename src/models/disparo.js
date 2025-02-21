@@ -10,6 +10,11 @@
           as: 'ItemDisparo',
           onDelete: 'CASCADE', // Configuração para delete cascade
         });
+        this.hasMany(models.Grupo, {
+          foreignKey: 'id_disparo',
+          as: 'Grupo',
+          onDelete: 'CASCADE', // Configuração para delete cascade
+        });        
       }
     }
   
