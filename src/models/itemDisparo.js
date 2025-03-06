@@ -27,15 +27,7 @@ module.exports = (sequelize) => {
         },
         onDelete: 'CASCADE', // Configuração para delete cascade
       },
-      id_grupo: {
-        type: DataTypes.BIGINT,
-        allowNull: false,
-        references: {
-          model: 'Grupo',
-          key: 'id',
-        },
-        onDelete: 'CASCADE', // Configuração para delete cascade
-      },     
+    
       id_peca_publicitaria: {
         type: DataTypes.BIGINT,
         allowNull: false,

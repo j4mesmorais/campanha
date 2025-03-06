@@ -19,16 +19,7 @@ module.exports = {
         onDelete: 'CASCADE',    // Delete cascade para remover os detalhes
         onUpdate: 'CASCADE',    // Atualizar cascata para mudanças no master
       },      
-      id_grupo: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-        references: {
-          model: 'Grupo', // Nome da tabela referenciada
-          key: 'id',           // Chave referenciada
-        },
-        onDelete: 'CASCADE',    // Delete cascade para remover os detalhes
-        onUpdate: 'CASCADE',    // Atualizar cascata para mudanças no master
-      },
+
       id_peca_publicitaria: {
         type: Sequelize.BIGINT,
         allowNull: false,
